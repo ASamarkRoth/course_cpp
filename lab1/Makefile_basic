@@ -1,0 +1,17 @@
+# The following rule means: "if ltest is older than ltest.o or list.o,
+# then link ltest".
+# If the *.o does not exist -> create them, i.e. run targets ltest.o and list.o
+# Say ltest.cc is updated and we run "make" then the dependencies or prerequisites of the target ltest is examined, i.e. is ltest.o older than ltest.cc and list.h. Hence the ltest.o target is also executed.
+# If a target file or a dependency file don't exist, then the corresponding target is executed. Cf. rm ltest.o and do "make ltest.o"
+#
+# Explanation of the rule below: ltest = target, ltest.o and list.o are prerequisites/(dependencies) and g++ -o ltest ltest.o list.o is a recipe.
+#  How to decide whether ltest is out of date: it is out of date if it does not exist, or if either ltest.o or list.o is more recent than it.
+#
+ltest: ltest.o list.o
+	g++ -o ltest ltest.o list.o
+
+# Rules to create the object files.
+ltest.o: ltest.cc list.h
+	g++ -c ltest.cc -std=c++11
+list.o: list.cc list.h
+	g++ -c list.cc -std=c++11

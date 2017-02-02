@@ -1,0 +1,40 @@
+NOTES LIBRARIES
+
+Libraries are basically a collection of object files which can be linked to. There exist two different ones:
+	Static library (.a)
+	Shared dynamic library (.so)
+
+Description:
+A static library is like a bookstore, and a shared library is like... a library. With the former, you get your own copy of the book/function to take home; with the latter you and everyone else go to the library to use the same book/function. So anyone who wants to use the (shared) library needs to know where it is, because you have to "go get" the book/function. With a static library, the book/function is yours to own, and you keep it within your home/program, and once you have it you don't care where or when you got it.
+
+Static libraries can be created with the "ar" command. 
+
+FOR OPTIONS see "man ar"
+
+Create a static library of name lab1 and comprising coding.o and list.o:
+ar -crv liblab1.a coding.o list.o
+
+Under linking: 
+Compile:
+$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+Linking:
+$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+LDFLAGS += L. #this means that the library should be searched for in the current directory
+LDLIBS += -llab1 #this means that the library liblab1.a should be linked
+
+Now the prerequisites for these object files can be removed!
+
+SHARED LIBRARIES:
+http://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
+
+Shared libraries are created with g++/gcc:
+http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html
+
+First add the -fPIC flag to the Makefile then create the liblab1.so.1.0 file with:
+g++ -shared -Wl,-soname,liblab1.so.1 -o liblab1.so.1.0 list.o coding.o
+
+The .so file is smaller than the .a file!!
+
+Before running with a shared library it is necessary to export LD_LIBRARY_PATH for it to find the files.
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH //DOES NOT WORK!?

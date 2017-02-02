@@ -1,0 +1,89 @@
+Lecture 1, 16/1
+cerr << = cout with error encoded output
+Within class declaration (in .h) of a function <-> inline function
+Memory leak <-> unused memory, e.g. forgotten used memory somewhere
+dangling pointer - a pointer to a deallocated object, i.e. deleted object but not pointer!?
+
+Lecture 2, 19/1
+Avoid allocating on heap, stack is preferred.
+new = allocated on heap!!
+std::unique_ptr - safe pointers delete the objects when the pointers are destroyed
+member functions polymorphic in inheritance -> declare virtual
+Slide 25 = interesting calling member functions
+Namespaces - using Graphics::Point -> only need to write Point();
+Why not use namespaces? - namespace spreads via include.h, could be unknown for users. Hence not in .h!
+operator overloading: Complex::operator+(const Complex& c)
+virtual - this keyword is not necessary in derived class member functions. It is nice to add "override" in the declaration for the compiler for som reason.
+# starting lines -> talking to preprocessor
+	use: nice to choose what parts of the program to compile
+int& is a reference, cf. alias and this is NOT the same as &val which is memory!?
+using *ptr is called dereferencing
+
+Lecture 3, 23/1
+Define tailor made types, useful in function returns of something made-up, e.g.: 
+	using counter_type = unsigned long
+	typedef table_type std::vector<int>
+auto = type specifier -> compiler deduces type
+	auto does not work automatically with references!
+	can write: const auto d = 0;
+	and auto&
+lambda function =?
+decltype Type specifier
+	interprets the return of a function as the type
+	sometype f() {...}
+	decltype(f()) sum = 0;
+	useful e.g. with template functions where the type is not known precompilation
+Classes can have embedded types, e.g. string::size_type
+x = i++; (x = i and then i gets incremented)
+x = ++i (i gets incremented and x = i+1); THIS IS TO BE PREFERRED DUE TO UNNECESSARY COPY!?
+ITERATOR: pointer to an element in container, can step around in the container
+Containers (e.g. vectors, strings) have begin() and end() which returns an iterator
+Get element value of iterator -> use dereferencing
+const iterator exists, e.g. cbegin();
+Say we do: int x[3]; then the following expressions are equal:
+	int* y = x+1;
+	int* y = &x[1];
+Get iterator from array: begin(x) (arrays are not objects!)
+if the size of the array is unknown, it is necessary to allocate them on the heap (!) with new. 
+	deallocate such an array: delete[] x;
+OBS: range based for-loops with references are awesome!
+
+Lecture 4, 26/1
+Vector data is allocated on heap
+type conversions:
+	static_cast<type>(variable) - standard!?
+	dyamic_cast<type>(pointer) - downcasting in an inheritance hierachy
+		needs virtual function to work (in mother)
+	const_cast<> - remove constness from variable
+Standard exception classes: exception, runtime_error, range_error, logic_error
+	throw runtime_error("Wrong parameter values!");
+	try{ program code}
+	catch(runtime_error& err) {error handling code}
+Functions:
+	inline functions must be defined in header files.
+	constexpr function -> compiler performs some calculations to enable const returns
+	possible with static variable in global function!
+Aktivitetsposter?
+function args: slides 78-80!
+	if object is on stack -> send by reference
+	if object is on heap -> send by pointer
+int* const = a const pointer to int
+int const * const = a const pointer to a const int
+initializer_list = {1,2,3} : possible to pass in function arrays
+reference can be used as return - see slide 85!
+never return a reference/pointer to a local object
+
+Lecture 5, 30/1
+Functions returning references : Study slide 85!!
+Don't need variable names in function argument declarations, i.e. in .h
+Overloading functions is possible - ?
+Default function/method arguments possible. Works as usual, they need to be trailing (i.e. last)
+Pointers to functions - may be passed as arguments to functions : provided slide 90
+Classes refers to eachother, e.g. class A has a pointer to B and vice versa, compiler takes it in order of declaration. Solution:
+	forward declaration: Class B;
+Default: class = private & struct = public
+Friend class: has access to private variables of this - see slide 97
+mutable member variable - Can change this member variable in a const object.
+Constructor initializer should be preferred! The effect is an overwrite within {} since e.g. string s1 runs the default constructor.
+It is possible with multiple constructors - se slide 103-104
+Keyword explicit -> the input argument must be as declared!!

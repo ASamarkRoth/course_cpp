@@ -18,14 +18,15 @@ Dictionary::Dictionary() {
 		word = word.substr(0, word.find_first_of(" "));
 		//cout << "Word: " << word << endl;
 		//ss >> word;
-		words.insert(word);
+		all_words.insert(word);
 		++counter;
 		//if(counter > 20) break;
 	}
 }
 
 bool Dictionary::contains(const string& word) const {
-	return true;
+	//cout << "count = " << all_words.count(word) << endl;
+	return all_words.count(word);
 }
 
 vector<string> Dictionary::get_suggestions(const string& word) const {

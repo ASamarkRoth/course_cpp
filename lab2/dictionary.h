@@ -12,6 +12,7 @@ public:
 	std::vector<std::string> get_suggestions(const std::string& word) const;
 private:
 	std::unordered_set<std::string> all_words;
+	std::vector<std::string> get_trigrams(std::string);
 };
 
 #endif

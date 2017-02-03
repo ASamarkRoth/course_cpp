@@ -5,11 +5,21 @@
 #include <cctype>
 #include "dictionary.h"
 
+#include "word.h"
+
 using namespace std;
 
 int main() {
 	Dictionary dict;
 	string word;
+
+	const vector<string> trigrams{"all", "kal", "llt"};
+	const vector<string> trigrams2{"all", "fal", "llt"};
+
+	Word sykel("sykel", trigrams2);
+
+	cout << "sykel matches: " << sykel.get_matches(trigrams) << endl;
+
 	while (cin >> word) {
 		transform(word.begin(), word.end(), word.begin(), ::tolower);
 		if (dict.contains(word)) {

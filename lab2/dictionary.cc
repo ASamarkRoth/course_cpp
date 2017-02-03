@@ -33,3 +33,24 @@ vector<string> Dictionary::get_suggestions(const string& word) const {
 	vector<string> suggestions;
 	return suggestions;
 }
+
+vector<string> Dictionary::get_trigrams(string word) {
+	vector<string> trigrams;
+	if(word.length() < 3) {
+		trigrams = {};
+	}
+	else {
+		trigrams.resize(word.length()-2);
+		for(unsigned int i = 0; i != word.length()-2; ++i) {
+			trigrams[i] = word.substr(i,3);
+		}
+		sort(trigrams.begin(), trigrams.end(), less<string>());
+	}
+
+	return trigrams;
+
+}
+
+
+
+

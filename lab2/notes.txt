@@ -1,0 +1,24 @@
+A functor: An object which acts like a function. I.e. a class which defines the operator().
+std::greater<class T>():
+template <class T> struct greater {
+	bool operator() (const T& x, const T& y) const {return x>y;}
+	typedef T first_argument_type;
+	typedef T second_argument_type;
+	typedef bool result_type;
+};
+
+Another home made example:
+class MyFunctor
+{
+   public:
+        int operator()(int x) { return x * 2;}
+	//(int x) specifies the input
+}
+
+MyFunctor doubler;
+int x = doubler(5);
+
+
+Lambdas: allows you to write an inline, anonymous functor to replace the class above.
+Example of a functor that returns the double the input
+[](int x) {return 2*x}

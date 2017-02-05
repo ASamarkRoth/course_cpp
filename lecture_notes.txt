@@ -13,7 +13,7 @@ Slide 25 = interesting calling member functions
 Namespaces - using Graphics::Point -> only need to write Point();
 Why not use namespaces? - namespace spreads via include.h, could be unknown for users. Hence not in .h!
 operator overloading: Complex::operator+(const Complex& c)
-virtual - this keyword is not necessary in derived class member functions. It is nice to add "override" in the declaration for the compiler for som reason.
+virtual - this keyword is not necessary in derived class member functions. It is nice to add "override" in the declaration for the compiler for some reason.
 # starting lines -> talking to preprocessor
 	use: nice to choose what parts of the program to compile
 int& is a reference, cf. alias and this is NOT the same as &val which is memory!?

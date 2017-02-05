@@ -12,19 +12,26 @@ using namespace std;
 int main() {
 	Dictionary dict;
 	string word;
+	/*
+	word = "seperated";
 
 	const vector<string> trigrams{"all", "kal", "llt"};
-	const vector<string> trigrams2{"all", "fal", "llt"};
+	const vector<string> trigrams2{"all", "llt"};
 
-	Word sykel("sykel", trigrams2);
+	Word sykel("kallt", trigrams);
 
-	cout << "sykel matches: " << sykel.get_matches(trigrams) << endl;
+	cout << "kallt matches: " << sykel.get_matches(trigrams2) << endl;
 
+	cout << "Contains = " << dict.contains(word) << endl;
+	vector<string> suggestions = dict.get_suggestions(word);
+
+		*/
 	while (cin >> word) {
 		transform(word.begin(), word.end(), word.begin(), ::tolower);
 		if (dict.contains(word)) {
 			cout << "Correct." << endl;
-		} else {
+		}
+		else {
 			vector<string> suggestions = dict.get_suggestions(word);
 			if (suggestions.empty()) {
 				cout << "Wrong, no suggestions." << endl;

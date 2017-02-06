@@ -87,3 +87,36 @@ mutable member variable - Can change this member variable in a const object.
 Constructor initializer should be preferred! The effect is an overwrite within {} since e.g. string s1 runs the default constructor.
 It is possible with multiple constructors - se slide 103-104
 Keyword explicit -> the input argument must be as declared!!
+
+Lecture 6, 6/2
+class allocator deals with raw memory, reserve raw memory without initialisation: slides 114-115
+	allocator<Point> alloc;
+	auto p = alloc.allocat(10);
+	alloc.construct for initialisation
+	alloc.destroy for execute ~
+Reference and value semantics - slides 116-117
+Copying objects : slide 119
+	initialisation is different from assignment!
+	Person p3 = p1; //copy constructor is run
+	Person p4("Alice");
+	p1 = p4; // operator=()!?
+	Person& operator=(const Person&) = delete; //copy constructor delete!
+Two different copies: shallow and deep. 
+	Shallow: blunt copy of bites on the stack (de nada with pointer)
+		E.g. a class with a string member. String has copy constructor-> shallow copy, this is executed and we are fine
+	Deep: copy of stacks and heap data
+General class, rule of five: constructor, destructor, assignment operator, move constructor, move assignment operator
+Templates:
+	template <typename T> //in header file
+	inline void swap(T& a, T& b) {...}
+Move constructor: moving the pointer of one object to another one and setting the pointer of the first one to nullptr
+	indicated with && in constructor
+	compiler needs to be certain that the previous one is not to be used anymore
+	nice with temporary values: a = b+c : (b+c) is a temporary, return is a temporar
+	a reference to an rvalue=temporary: &&
+lvalue & rvalue : slide 136
+	lvalue: variable
+	rvalue <-> temporary
+noexcept: informs compiler that the constructor will not throw any exception. Important for certain std::containers for them to use move constructor.
+operator=(): can also be adjusted for rvalues, with a move assignment implementation
+force move: std::move();

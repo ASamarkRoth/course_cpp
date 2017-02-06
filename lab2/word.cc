@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//Why do we pass by reference?
+////Why do we pass by reference?
 Word::Word(const string& w, const vector<string>& t) : word(w), trigrams{t} {
 }
 
@@ -19,33 +19,28 @@ unsigned int Word::get_matches(const vector<string>& t) const {
 	int compare;
 	int counter = 0;
 	auto it_trigram = t.begin();
+	auto it_this_trigram = trigrams.begin();
 	//cout << "Getting matches" << endl;
-	for(unsigned int i = 0; i != trigrams.size(); ++i) {
-		if(it_trigram == t.end()) {
-			//cout << "At iterator end!" << endl;
-			break;
+	while(true) {
+		if(it_this_trigram == trigrams.end() || it_trigram == t.end()) break;
+		++counter;
+		compare = (*it_this_trigram).compare(*it_trigram);
+		//cout << "this_trigram: " << *it_this_trigram << " and compare with: " << *it_trigram << endl;
+		//cout << "compare = " << compare << endl;
+		if(compare == 0) {
+			++matches;
+			++it_trigram;
+			++it_this_trigram;
 		}
-		while(true) {
-			++counter;
-			compare = trigrams[i].compare(*it_trigram);
-			//cout << "this_trigram: " << trigrams[i] << " and compare with: " << *it_trigram << endl;
-			//cout << "compare = " << compare << endl;
-			if(compare == 0) {
-				++matches;
-				++it_trigram;
-				break;
-			}
-			else if(compare > 0) {
-				++it_trigram;
-				if(it_trigram == t.end()) break;
-			}
-			else {
-				break;
-			}
-			//if(counter > 10) break;
+		else if(compare > 0) {
+			++it_trigram;
 		}
-
+		else {
+			++it_this_trigram;
+		}
+		//if(counter > 10) break;
 	}
+
 	return matches;
 }
 

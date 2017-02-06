@@ -24,8 +24,8 @@ int main() {
 
 	cout << "Contains = " << dict.contains(word) << endl;
 	vector<string> suggestions = dict.get_suggestions(word);
-
 		*/
+
 	while (cin >> word) {
 		transform(word.begin(), word.end(), word.begin(), ::tolower);
 		if (dict.contains(word)) {

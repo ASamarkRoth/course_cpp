@@ -106,7 +106,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& wor
 		cout << "Cost, suggested = " << determine_cost(suggested, word) << ", " << suggested << endl;
 	}
 	//Using a lambda functor
-	sort(ranks.begin(), ranks.end(), [](const pair<int, string> &left, const pair<int, string> &right) {return left.first < right.first;});
+	sort(ranks.begin(), ranks.end()); //, [](const pair<int, string> &left, const pair<int, string> &right) {return left.first < right.first;});
 
 	//cout << "Sorting wrt cost ... " << endl;
 	for(auto rank : ranks) {
@@ -120,7 +120,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& wor
 
 int Dictionary::determine_cost(string suggest_word, const string word) const {
 	int a;
-	int d[26][26];
+	int d[26][26] {{0}};
 	d[0][0] = 0;
 	for(int i = 1; i != 26; ++i) {
 		d[i][0] = i;
@@ -171,7 +171,7 @@ void Dictionary::trim_suggestions(vector<string>& suggestions) const {
 	}
 
 
-	//suggestions.resize(5);
+	suggestions.resize(5);
 
 
 

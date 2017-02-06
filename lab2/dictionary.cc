@@ -103,7 +103,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& wor
 	//cout << "Evaluating cost ... " << endl;
 	for(auto suggested : suggestions) {
 		ranks.push_back(make_pair(determine_cost(suggested, word), suggested));
-		//cout << "Cost, suggested = " << determine_cost(suggested, word) << ", " << suggested << endl;
+		cout << "Cost, suggested = " << determine_cost(suggested, word) << ", " << suggested << endl;
 	}
 	//Using a lambda functor
 	sort(ranks.begin(), ranks.end(), [](const pair<int, string> &left, const pair<int, string> &right) {return left.first < right.first;});
@@ -147,7 +147,31 @@ int Dictionary::determine_cost(string suggest_word, const string word) const {
 void Dictionary::trim_suggestions(vector<string>& suggestions) const {
 	cout << "Trimming suggestions ... " << endl;
 
-	suggestions.resize(5);
+	vector<string> to_remove;
+
+	bool remove;
+
+	for(size_t i = 0; i != suggestions.size(); ++i) {
+		remove = false;
+		//cout << "Suggestions[i] = " << suggestions[i] << endl;
+		for(size_t j = 0; j != suggestions.size(); ++j) {
+			//cout << "compare = " << suggestions[j] << endl;
+			if(suggestions[i] == suggestions[j]) cout << suggestions[i] << " = " << suggestions[j] << endl;
+			else if(suggestions[i].substr(0,suggestions[i].size()-1).compare(suggestions[j]) == 0) {
+				//cout << "suggestions[i] is a subset of " << suggestions[i] << " =partof " << suggestions[j] << endl;
+				//cout << "Removing " << *(suggestions.begin()+i) << endl;
+				remove = true;
+				break;
+			}
+		}
+		if(remove) {
+			suggestions.erase(suggestions.begin()+i);
+			--i;
+		}
+	}
+
+
+	//suggestions.resize(5);
 
 
 

@@ -5,7 +5,7 @@
 using std::cout;
 using std::endl;
 
-template <class T>
+template <typename T>
 std::string toString(T& obj) {
 	cout << "toString" << endl;
 	std::stringstream ss;

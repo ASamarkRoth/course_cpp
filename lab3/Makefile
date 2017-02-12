@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = html_test date primes toString
+PROGS = html_test date primes toString string_cast
 
 all: $(PROGS)
 
@@ -39,6 +39,8 @@ date: date_test.o date.o
 primes: primes.o
 
 toString: toString.o date.o
+
+string_cast: string_cast.o date.o
 
 # Phony targets
 .PHONY: all clean

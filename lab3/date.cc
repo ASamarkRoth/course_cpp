@@ -72,10 +72,10 @@ std::istream& operator>>(std::istream& is, Date& d) {
 	string temp;
 	size_t l;
 
-	cout << "Extraction 1 " << input << endl;
+	//cout << "Extraction 1 " << input << endl;
 
 	l = input.find_first_of("-");
-	cout << "l = " << l << endl;
+	//cout << "l = " << l << endl;
 	if(l != 4) {
 		is.setstate(std::ios::failbit);
 		return is;
@@ -83,7 +83,7 @@ std::istream& operator>>(std::istream& is, Date& d) {
 	d.year = stoi(input.substr(0,l));
 	input.erase(0,l+1);
 
-	cout << "Extraction 2 " << input << endl;
+	//cout << "Extraction 2 " << input << endl;
 	l = input.find_first_of("-");
 	if(stoi(input.substr(0,l+1)) > 12 || stoi(input.substr(0,l+1)) < 1) {
 		is.setstate(std::ios::failbit);
@@ -92,7 +92,7 @@ std::istream& operator>>(std::istream& is, Date& d) {
 	d.month = stoi(input.substr(0,l+1));
 	input.erase(0,l+1);
 
-	cout << "Extraction 3 " << input << endl;
+	//cout << "Extraction 3 " << input << endl;
 	l = input.find_first_of("-");
 	if(l == string::npos) l = input.size()-1;
 	if(stoi(input.substr(0, l+1)) > d.daysPerMonth[d.getMonth()] || stoi(input.substr(0,l+1)) < 1) {

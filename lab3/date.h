@@ -22,8 +22,12 @@ private:
 	static int daysPerMonth[12]; // number of days in each month
 };
 
-template <class T>
+template <typename T>
 std::string toString(T&);
+
+template <typename T>
+T string_cast(const std::string&);
+
 
 std::istream& operator>>(std::istream& is, Date& d);
 std::ostream& operator<<(std::ostream& os, const Date& d);

@@ -35,7 +35,7 @@ decltype Type specifier
 	useful e.g. with template functions where the type is not known precompilation
 Classes can have embedded types, e.g. string::size_type
 x = i++; (x = i and then i gets incremented)
-x = ++i (i gets incremented and x = i+1); THIS IS TO BE PREFERRED DUE TO UNNECESSARY COPY!?
+x = ++i (i gets incremented and x = i+1); THIS IS TO BE PREFERRED DUE TO UNNECESSARY COPY. Copies involve memory modification and additional operations.
 ITERATOR: pointer to an element in container, can step around in the container
 Containers (e.g. vectors, strings) have begin() and end() which returns an iterator
 Get element value of iterator -> use dereferencing
@@ -120,3 +120,53 @@ lvalue & rvalue : slide 136
 noexcept: informs compiler that the constructor will not throw any exception. Important for certain std::containers for them to use move constructor.
 operator=(): can also be adjusted for rvalues, with a move assignment implementation
 force move: std::move();
+
+Lecture 7, 9/2 (was absent):
+TEMPLATES:
+Difference function templates and class templates! 
+When a template function is called the typename parameters are instantiated to its' given types.
+Remember: the objects used in the template function needs the operators used implemented. 
+	Concept: set of requirements that a template argument must meet
+		Default constructible
+		Assignable
+		LessThanComparable 
+		EqualityComparable
+	Model: An entity that meets the requirements of a concept is a model of the concept.
+Explicit instantiation:
+	compare<double>(i,d) (even though int i and double d this works!)
+When unknown return type, use keyword auto!
+decltype - inspects the declared type of an entity!?
+As with inline functions, template functions should be defined in header, since the code needs to be generated at call site
+OVERLOADING:
+Except: ::, ., .*, ?, :, sizeof
+For classes: assignment =, subscript [], call (()) and member access -> must be member
+	++, +=  should be members
+	+,*,== should be non members
+Explicit initialisation: with explicit keyword, this does not allow copy construction?
+When implementing ==, != should also be implemented. These should be global functions since they don't change any state. Use friend keyword to enable access for private members. If == is implemented then operator!=: return !(lhs == rhs)
+
+Lecture 8, 13/2
+CLASS TEMPLATES:
+Implement templates in header!
+Stack<char> is especially needed for template classes
+Template parameters may have default types and values
+	non-type may also be used e.g. <T = int, size_t size = 100>
+STANDARD LIBRARY:
+Containers: vectors, maps, stacks, queues
+Algorithms: operations on containers (sort, copy...)
+Iterators: iterating containers
+
+To define an iterator yourself which you can use with stdlib, overload the following operators (see slide 221):
+	++ (for next)
+	(begin())
+	(end())
+	!=
+	* (dereference)
+	assignable!
+Different iterators: InputIterator (only reads) , OutputIterators (only writes to data structure)
+	insert_iterator
+	istream_iterator!
+Copy algorithm is nice with iterator and construct + mod of container
+Read entire file into 1 string:
+	string s((istream_iterator<char>(ifstream("..."))), istream_iterator())
+

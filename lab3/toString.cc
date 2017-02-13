@@ -5,6 +5,8 @@
 using std::cout;
 using std::endl;
 
+//.inl conversion in other file to header
+//
 template <typename T>
 std::string toString(T& obj) {
 	cout << "toString" << endl;

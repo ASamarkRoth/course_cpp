@@ -37,13 +37,25 @@ int main(int argc, char** argv) {
 		counter = primes.find_first_of("P", counter+1);
 	}
 
+	cout << " ";
+	for(int j = 1; j <10; ++j) cout << "         " << j;
+	cout << endl;
 	for(int j = 0; j < 101; ++j) {
 		cout << (j % 10);
 	}
 	cout << endl;
 	for(int j = 0; j < 101; ++j) cout << primes[j];
 	cout << endl;
-	//for(int j = 0; j <= M; ++j) cout << j << primes[j] << endl;
+	cout<< endl;
+
+	for(int j = 1; j <10; ++j) cout << "         " << j;
+	cout << endl;
+	for(int j = 1; j < 101; ++j) {
+		cout << (j % 10);
+	}
+	cout << endl;
+	for(int j = 101; j < 201; ++j) cout << primes[j];
+	cout << endl;
 
 	cout << "Largest prime: " << primes.rfind("P") << endl;
 

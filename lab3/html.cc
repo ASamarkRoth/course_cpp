@@ -15,7 +15,7 @@ TagRemover::TagRemover(istream& input) {
 	}
 
 	cout << all << endl;
-	cout << "start = " << all.find_first_of("<") << " end = " << all.find_first_of(">") << endl;
+	//cout << "start = " << all.find_first_of("<") << " end = " << all.find_first_of(">") << endl;
 
 	size_t tag1 = all.find_first_of("<");
 	size_t tag2 = all.find_first_of(">");
@@ -27,10 +27,10 @@ TagRemover::TagRemover(istream& input) {
 	cout << all << endl;
 
 
-	find_and_replace(all, "&lt", "<");
-	find_and_replace(all, "&gt", ">");
-	find_and_replace(all, "&nbsp", " ");
-	find_and_replace(all, "&amp", "&");
+	find_and_replace(all, "&lt;", "<");
+	find_and_replace(all, "&gt;", ">");
+	find_and_replace(all, "&nbsp;", " ");
+	find_and_replace(all, "&amp;", "&");
 
 	cout << all << endl;
 

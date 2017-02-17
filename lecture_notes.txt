@@ -170,3 +170,26 @@ Copy algorithm is nice with iterator and construct + mod of container
 Read entire file into 1 string:
 	string s((istream_iterator<char>(ifstream("..."))), istream_iterator())
 
+Lecture 9, 16/2 (absent)
+Function objects can be passed as arguments to algorithms in std::
+It is possible to overload the function call operator()! and thus to pass the class/struct as a function argument
+The function objects are sometimes called functors!
+E.g. provide whatever function or function object:
+	template <typename It, typename op>
+	Op for_each(It beg, It end, Op op) {
+		for(; beg != end; ++beg) {
+			op(*beg);
+		}
+		return op;
+	}
+The function object can store sweet variables, such as: 
+	bool exists_smaller(const vector<int>& v, int value) {
+		return find_if(v.begin(), v.end(), Less(value)) != v.end();
+	}
+In c++11 we have lambda function:
+	bool exists_smaller(const vector<int>& v, int value) {
+		return find_if(v.begin(), v.end(), 
+		[value](int x) {return x < value;}) != v.end();
+	}
+	[value] : access the variable value in the current scope also [&value]
+		

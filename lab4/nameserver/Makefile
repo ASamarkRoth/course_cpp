@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = nstest
+PROGS = nstest nstime
 
 all: $(PROGS)
 
@@ -33,7 +33,9 @@ all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking, OBS: target name must match one of the object files, otherwise no executable!!!
 
-nstest: vns.o nstest.o
+nstest: vns.o mns.o umns.o hns.o hash_func.o nstest.o
+
+nstime: vns.o mns.o umns.o hns.o hash_func.o nstime.o
 
 # Phony targets
 .PHONY: all clean

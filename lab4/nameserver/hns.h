@@ -2,14 +2,15 @@
 #define HNS_H 1
 
 #include "nameserverinterface.h"
-#include "hash_func.h"
 #include <vector>
 
 class HNS : public NameServerInterface {
 public:
-	HNS(const size_t size) : table_size(size) {;}
+	HNS(const size_t size) : table_size(size), nameserver(table_size) {;}
 
 	~HNS() {;}
+
+	uint32_t SuperFastHash (const char * data, int len) const;
 
 	void insert(const HostName&, const IPAddress&) override;
 

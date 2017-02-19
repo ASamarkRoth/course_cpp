@@ -3,7 +3,6 @@
 
 #include "nameserverinterface.h"
 #include <vector>
-#include <utility>
 
 class VNS : public NameServerInterface {
 public:

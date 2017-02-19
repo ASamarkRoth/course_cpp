@@ -2,7 +2,7 @@
 #include <algorithm>
 
 void UMNS::insert(const HostName& hostname, const IPAddress& ip) {
-	nameserver.push_back(make_pair(hostname, ip));
+	nameserver.insert(std::make_pair(hostname, ip));
 }
 
 bool UMNS::remove(const HostName& hostname) {

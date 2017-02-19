@@ -1,9 +1,11 @@
-nstest.o: nstest.cc nameserverinterface.h vns.h hns.h hash_func.h
+nstest.o: nstest.cc nameserverinterface.h vns.h mns.h umns.h hns.h
 
 nameserverinterface.h:
 
 vns.h:
 
-hns.h:
+mns.h:
 
-hash_func.h:
+umns.h:
+
+hns.h:

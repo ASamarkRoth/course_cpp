@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = html_test date primes toString string_cast
+PROGS = nstest
 
 all: $(PROGS)
 
@@ -32,15 +32,8 @@ all: $(PROGS)
 # $^ = The names of all the prerequisites, with spaces between them.
 
 # Targets rely on implicit rules for compiling and linking, OBS: target name must match one of the object files, otherwise no executable!!!
-html_test: html_test.o html.o
 
-date: date_test.o date.o
-
-primes: primes.o
-
-toString: toString.o date.o
-
-string_cast: string_cast.o date.o
+nstest: vns.o nstest.o
 
 # Phony targets
 .PHONY: all clean

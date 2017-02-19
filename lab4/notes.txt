@@ -1,0 +1,28 @@
+Notes lab 4
+
+Recall an iterator is just a special pointer, and thus if you want to access element one just uses the dereference operator.
+
+Inheritance:
+setting class method = 0 means that it is pure virtual!
+
+destructor = default ->
+It means that you want to use the compiler-generated version of that function, so you don't need to specify a body.
+
+A derived class must include in its own class body a declaration of all the virtual functions it intends to define itself.
+A derived virtual method which intended for definition can be noted override (after its parameter list in .h)
+
+"Slicing" is where you assign an object of a derived class to an instance of a base class, thereby losing part of the information - some of it is "sliced" away.
+
+public, private and protected inheritance:
+public keeps the keyword structure in the derived class the same as the base class (most important)
+private - all members in the derived class are private
+
+
+Hash table:
+(as an unordered_map): <key, value>
+Hash function: Hash(key) -> index number, where value to key is
+Collisions: many keys are directed to a common index number
+Chaining: linking common index numbers in a list
+table: how the index numbers are "stored"
+Determine table_size and the index number as the modulus of (sum(chars) % table_size this is one type of hash function
+Index numbers of a hash table are called buckets!

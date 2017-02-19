@@ -192,4 +192,13 @@ In c++11 we have lambda function:
 		[value](int x) {return x < value;}) != v.end();
 	}
 	[value] : access the variable value in the current scope also [&value]
-		
+<algorithms> have hundreds of sweet algorithms on containers	
+		Nonmodifying (find, find_if)
+		Modifying (for_each, copy, fill)
+		Removing (remove, unique)
+		Mutating (reverse, random_shuffle)
+		Sorting (sort)
+		Sorted range (binary_search)
+		Numeric (accumulate, inner product)
+	Some containers have specialised algorithms optimised, e.g. map::find
+	Return iterator (mostly)

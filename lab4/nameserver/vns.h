@@ -1,4 +1,5 @@
 #ifndef VNS_H
+
 #define VNS_H 1
 
 #include "nameserverinterface.h"
@@ -9,7 +10,7 @@ public:
 
 	~VNS() {;}
 
-	void insert(const HostName&, const IPAddress&) override;
+	virtual void insert(const HostName&, const IPAddress&) override;
 
 	bool remove(const HostName&) override;
 

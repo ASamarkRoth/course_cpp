@@ -26,3 +26,7 @@ Chaining: linking common index numbers in a list
 table: how the index numbers are "stored"
 Determine table_size and the index number as the modulus of (sum(chars) % table_size this is one type of hash function
 Index numbers of a hash table are called buckets!
+
+
+REMEMBER:
+Pass the variable by reference to avoid a copy! Could be very valuable when high performance computing. 

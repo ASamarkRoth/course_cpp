@@ -1,4 +1,5 @@
 #include "simplebitset.h"
+#include <iostream>
 
 SimpleBitset::SimpleBitset() : bits(0) {}
 
@@ -11,6 +12,7 @@ bool SimpleBitset::get(size_t pos) const {
 	 * Shift a '1' to position pos, 'and' with the bits,
 	 * check if result is != 0.
 	 */
+	//std::cout << "1L << pos: " << (1L << pos) << std::endl;
 	return (bits & (1L << pos)) != 0;
 }
 

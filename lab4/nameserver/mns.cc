@@ -7,8 +7,7 @@ void MNS::insert(const HostName& hostname, const IPAddress& ip) {
 }
 
 bool MNS::remove(const HostName& hostname) {
-	auto ret = find_if(nameserver.begin(), nameserver.end(),
-			[hostname](std::pair<HostName, IPAddress> x) {return x.first == hostname;});
+	auto ret = nameserver.find(hostname);
 
 	if(ret != nameserver.end()) {
 		nameserver.erase(ret);
@@ -19,8 +18,7 @@ bool MNS::remove(const HostName& hostname) {
 }
 
 IPAddress MNS::lookup(const HostName& hostname) const {
-	auto ret = find_if(nameserver.begin(), nameserver.end(),
-			[hostname](std::pair<HostName, IPAddress> x) {return x.first == hostname;});
+	auto ret = nameserver.find(hostname);
 
 	return ret != nameserver.end() ? (*ret).second : NON_EXISTING_ADDRESS;
 }

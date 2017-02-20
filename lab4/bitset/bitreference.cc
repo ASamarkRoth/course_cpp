@@ -9,9 +9,9 @@ BitReference& BitReference::operator=(bool b) {
 
 	// From simplebitset.cc
 	if (b) {
-		*p_bits |= 1L << pos;
+		*p_bits |= 1UL << pos;
 	} else {
-		*p_bits &= ~ (1L << pos);
+		*p_bits &= ~ (1UL << pos);
 	}
 
 	return *this;
@@ -23,14 +23,17 @@ BitReference& BitReference::operator=(const BitReference& rhs) {
 	// Same as operator=(bool), but the bit is picked from rhs
 	//
 
+	/*
 	if (rhs) {
 		*p_bits |= 1L << pos;
 	} else {
 		*p_bits &= ~ (1L << pos);
 	}
+	*/
+
+	return *this = static_cast<bool>(rhs);
 
 
-	return *this;
 }
 
 BitReference::operator bool() const {

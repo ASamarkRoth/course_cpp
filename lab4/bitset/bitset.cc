@@ -21,5 +21,5 @@ Bitset::iterator Bitset::begin() {
 }
 
 Bitset::iterator Bitset::end() {
-	return BitsetIterator(nullptr, BPW);
+	return BitsetIterator(&bits, BPW);
 }

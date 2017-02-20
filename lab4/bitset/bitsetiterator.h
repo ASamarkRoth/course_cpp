@@ -28,7 +28,6 @@ public:
 	//this is prefix (indicated with that a reference is returned)
 	BitsetIterator& operator++() {
 		if(ref.pos >= Bitset::BPW - 1) {
-			ref.p_bits = nullptr;
 			ref.pos = Bitset::BPW;
 		}
 		else ++ref.pos;

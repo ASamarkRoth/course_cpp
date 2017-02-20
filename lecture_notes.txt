@@ -202,3 +202,24 @@ In c++11 we have lambda function:
 		Numeric (accumulate, inner product)
 	Some containers have specialised algorithms optimised, e.g. map::find
 	Return iterator (mostly)
+
+Lecture 10, 20/2
+virtual <-> dynamic binding
+no keyword virtual -> call from base class
+use override on functions that should be defined in derived class (USE!)
+virtual functions also work as expected when called through a reference!
+Do not forget to call the base class constructor in the implementation of the derived class constructor. If left out -> the default constructor of the base class is called, but this is not created unless you have e.g. Shape() = default;
+pure virtual (cf. abstract Java): set virtual = 0
+Recommended to have a virtual default destructor!
+upcasts are fine
+To perform downcast: dynamic_cast<newtype*>(expression) (requires a virtual member function!)
+vtable: virtual table, here all virtual functions are stored!
+If function argument is passed by value object slicing can occur!
+Public and private inheritance - slide 185
+
+If copy constructor exists in base it should also exist in derived. In this case the copy constructor of the base class should be called in the definition of the same in the derived class.
+Make destructors virtual!!!!! see slide 191
+Think carefully before multiple inheritance > duplications
+To explicitly decide from which base class a function should be called : ta.student::print()
+virtual inheritance: fix duplication in multiple inheritance e.g.
+multiple inheritance: diamond of death ...

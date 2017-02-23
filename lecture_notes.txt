@@ -223,3 +223,20 @@ Think carefully before multiple inheritance > duplications
 To explicitly decide from which base class a function should be called : ta.student::print()
 virtual inheritance: fix duplication in multiple inheritance e.g.
 multiple inheritance: diamond of death ...
+
+Lecture 11, 23/2
+Containers:
+	Sequences - linear order (vector)
+	Associative - order defined by container (set, map)
+Not common to store pointers in containers, if -> use safe pointers
+When move -> The object is only shallowly copied, i.e. all on stack copied!? And then pointer moved
+It is possible to allocate memory without initialisation (or default initialisation):
+	emplace_back: take parameters as the constructor of the container element and object is initialised on place (Construct in place) : see slide 260
+One can access the following for a container with container::...:
+	const_iterator
+	iterator
+	value_type
+	size_type
+classic arrays exist as wrapper: array<int, 10> and is possible to iterate etc.
+If choosing sequence: use vector!!
+For an arbitrary object and a hash table it is possible to oneself define what is supposed to be hashed and pass this into the unordered map e.g.

@@ -239,4 +239,11 @@ One can access the following for a container with container::...:
 	size_type
 classic arrays exist as wrapper: array<int, 10> and is possible to iterate etc.
 If choosing sequence: use vector!!
-For an arbitrary object and a hash table it is possible to oneself define what is supposed to be hashed and pass this into the unordered map e.g.
+For an arbitrary object and a hash table it is possible to oneself define what is supposed to be hashed and pass this into the unordered map e.g. see slide 281
+
+Lecture 12, 27/2
+Project:
+Port numbers > 1024!
+Exam:
+Example what is written with the following inherited classes ...
+template task will be there
